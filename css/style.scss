@@ -1644,8 +1644,9 @@ h1{
     margin-bottom: 15px;
     line-height: 20px;
     text-align: left;
-    font-family: $RobotoLight;
-    color: $DarkGray;
+    font-family: 'Roboto', sans-serif;
+    font-weight:300;
+    color: #202020;
     @include laptop{
       max-width: 100%;
     }
