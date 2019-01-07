@@ -1,0 +1,2025 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+q {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+
+
+
+
+
+/*colors*/
+$blackRussian:#03091F;
+$white:#fff;
+$black:#000;
+$jazzberryJam:#A80254;
+$RegentStBlue:#98C1D8;
+$MidnightExpress:#021434;
+$Christalle:#2f005e;
+$Indigo:#5c0091;
+$gray:#f7f7f7;
+$DarkGray:#878787;
+
+/*end colors*/
+$transition: 450ms ease 0s;
+@mixin transition($transition) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
+
+/*fonts*/
+@font-face {
+  font-family: "Skoda_pro_bold";
+  //src: url("../fonts/skoda_pro_bold-webfont.woff");
+  src: url("../assets/fonts/SkodaPro-Bold.woff");
+}
+@font-face {
+  font-family: "Skoda_regular";
+  //src: url("../fonts/skoda_pro-webfont.woff");
+  src: url("../assets/fonts/SkodaPro.woff");
+}
+@font-face {
+  font-family: "skoda_pro_light";
+  src: url("../assets/fonts/skoda_pro_light-webfont.woff");
+}
+@font-face {
+  font-family: "skoda_pro_extra_bold";
+  src: url("../assets/fonts/skoda_pro_extrabold-webfont.woff");
+}
+@font-face {
+  font-family: "roboto-bold";
+  //src: url("../fonts/roboto-bold-webfont.woff");
+  src: url("../assets/fonts/Roboto-Bold.woff");
+}
+@font-face {
+  font-family: "roboto-thin";
+  //src: url("../fonts/roboto-thin-webfont.woff");
+  src: url("../assets/fonts/Roboto-Thin.woff");
+}
+@font-face {
+  font-family: "roboto-light";
+  src: url("../assets/fonts/roboto-light-webfont.woff");
+}
+@font-face {
+  font-family: "robotocondensed";
+  src: url("../assets/fonts/robotocondensed-bold-webfont.woff");
+}
+@font-face {
+  font-family: "skoda_pro_light1";
+  src: url("../assets/fonts/SkodaPro-Light1.woff");
+}
+$SkodaBold: 'Skoda_pro_bold', sans-serif;
+$SkodaRegular: 'Skoda_regular', sans-serif;
+$SkodaLight: 'skoda_pro_light', sans-serif;
+$SkodaLight1: 'skoda_pro_light1', sans-serif;
+$SkodaExtraBold: 'skoda_pro_extra_bold', sans-serif;
+$RobotoBold: 'roboto-bold', sans-serif;
+$RobotoThin: 'roboto-thin', sans-serif;
+$RobotoLight: 'roboto-light', sans-serif;
+$robotocondensed: 'robotocondensed', sans-serif;
+/*fonts*/
+
+/*mixin flex*/
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+@mixin align-content($align) {
+  -webkit-align-content: $align;
+  -moz-align-content: $align;
+  -ms-align-content: $align;
+  align-content: $align;
+}
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+/*mixin flex*/
+
+
+$mobile: 768;
+  // mixins for media-query
+@mixin maxlaptop {
+  @media screen and (max-width: 1367px){
+    @content}
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px){
+    @content}
+}
+@mixin tablet {
+  @media screen and (max-width: 991px){
+  @content}
+}
+
+
+@mixin mobile {
+  @media screen and (max-width: $mobile + 'px'){
+  @content}
+
+}
+@mixin phone {
+  @media screen and (max-width: 500px){
+    @content}
+
+}
+/*general*/
+.upercase{
+  text-transform: uppercase;
+}
+body,html{
+  overflow-x: hidden;
+}
+.wrapper{
+  max-width: 1172px;
+
+  padding: 0 10px;
+  margin: 0 auto;
+}
+h1{
+  font-family: $SkodaBold;
+  font-size: 75px;
+  color: $white;
+}
+/*end general*/
+
+@keyframes spin{0%{opacity:0;} 50%{opacity:1;} 100%{opacity:0;}}
+
+
+.mobile,.full_menu{
+  display: none;
+  @include mobile{
+
+  }
+
+}
+.mobile{
+  @include mobile{
+    display: block;
+  }
+  .menu{
+    width: 40px;
+    cursor: pointer;
+    position: absolute;
+    top: 32px;
+    left: 15px;
+  }
+}
+.full_menu.open{
+  display: block;
+  background: #0e0f3b;
+  width: 100%;
+
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  position: fixed;
+  padding-top: 54px;
+
+  li{
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 0;
+    a{
+      font-size: 25px;
+      line-height: 40px;
+      &:hover{
+        border: none;
+      }
+    }
+
+  }
+}
+.close{
+  width: 30px;
+  position: absolute;
+  right: 15px;
+  top: 20px;
+}
+/*top*/
+.top {
+  background: url("../assets/images/bg_main.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  @include flexbox();
+  @include flex-direction(column);
+  @include mobile{
+    height: 100%;
+  }
+  .light{
+
+    left: 0;
+    top: 0;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: url(../assets/images/bg_main1.jpg) no-repeat;
+    background-size: cover;
+    animation-name: spin;
+    animation-duration: 2500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    opacity: 0;
+    @include mobile{
+      height: 100%;
+    }
+  }
+
+  .scroll{
+    height: 65px;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 31px;
+    cursor: pointer;
+    @include maxlaptop{
+      bottom: -4px;
+    }
+    @include laptop{
+      display: none;
+    }
+    @include mobile{
+      display: none;
+    }
+    img{
+      @include maxlaptop{
+        height: 50px;
+      }
+    }
+  }
+  .logo{
+    display: block;
+    margin-top: 7px;
+    top:12px;
+    position: absolute;
+    z-index: 4;
+
+    @include tablet{
+      width: 95px;
+    }
+    @include mobile{
+      z-index: 6;
+      width: 75px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 7px;
+    }
+  }
+
+  .top_wrapper{
+    @include flexbox();
+    @include align-items(flex-end);
+    @include flex-direction(column);
+
+    margin-right: 4%;
+    @include justify-content(center);
+    height: calc(100vh - 204px);
+    padding-top: 92px;
+
+    @include mobile{
+      margin-right: 0;
+      padding-top: 120px;
+      padding-bottom: 100px;
+      height: 100%;
+    }
+    h1{
+      z-index: 2;
+      font-size: 53px;
+      font-family: 'Roboto Condensed', sans-serif;
+
+      text-align: center;
+      max-width: 740px;
+      width: 100%;
+      line-height: 64px;
+      @include maxlaptop{
+        margin-top: 25px;
+        
+      }
+      @include mobile{
+        z-index: 1;
+      }
+
+      @include mobile{
+        font-size: 45px;
+        width: 100%;
+        line-height: 1.2;
+      }
+      @include phone{
+        font-size: 27px;
+        line-height: 1.2;
+      }
+      span{
+        font-size: 40px;
+
+        @include mobile{
+          font-size: 40px;
+          width: 100%;
+        }
+        @include phone{
+          font-size: 20px;
+        }
+      }
+      .third_part{
+        font-size: 49px;
+        @include mobile{
+          font-size: 43px;
+          width: 100%;
+        }
+        @include phone{
+          font-size: 25px;
+        }
+      }
+      }
+    }
+
+  header {
+    z-index: 2;
+    height: 70px;
+    padding-top: 22px;
+    @include flexbox();
+    background-color: $blackRussian;
+    box-shadow: 0px 10px 120px 48px rgba(3, 9, 31,0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    @include mobile{
+      padding-top: 0;
+      z-index:5;
+    }
+    .wrapper{
+      @include flexbox();
+      height: 118px;
+      @include justify-content(space-between);
+      width: 100%;
+
+    }
+    ul{
+      @include tablet{
+        padding-top: 4px;
+      }
+    }
+    li {
+      display: inline-block;
+      padding: 0 9px;
+      line-height: 50px;
+      cursor: pointer;
+      @include transition($transition);
+      @include tablet{
+        line-height: 30px;
+        padding: 0 7px;
+      }
+      &:last-child{
+
+        padding-right: 0;
+        @include laptop{
+          padding-right: 10px;
+        }
+
+      }
+
+    }
+    .language{
+      z-index: 2;
+      position: absolute;
+      right: 0px;
+      top: 19px;
+      &:before{
+        content: "";
+        background: url("../assets/images/arrow.png") no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 10px;
+        height: 7px;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        position: absolute;
+        cursor: pointer;
+
+
+
+
+      }
+
+      @include laptop{
+        top: 24px;
+
+      }
+      @include tablet{
+        top: 15px;
+
+      }
+      @include mobile{
+        z-index: 1;
+        top: 24px;
+      }
+      li{
+        line-height: initial;
+        display: block;
+        padding: 0;
+        &:hover{
+          border-bottom: none;
+        }
+      }
+
+      a {
+        font-family: "Skoda_pro_bold", sans-serif;
+        font-size: 24px;
+        color: #fff;
+        text-decoration: none;
+        position: relative;
+        opacity: 1;
+        margin-top: 3px;
+        display: block;
+        transition: 450ms ease 0s;
+        line-height: initial;
+        @include laptop{
+          font-size: 19px;
+          margin-top: 1px;
+        }
+        @include tablet{
+          font-size: 16px;
+        }
+        @include mobile{
+          font-size: 19px;
+        }
+        &:hover {
+          opacity: 1;
+          border: none;
+        }
+    }
+    }
+    nav{
+      margin-right: 0px;
+      position: relative;
+      width: 100%;
+      margin-left: 157px;
+      padding-top:10px;
+      @include tablet{
+        margin-left: 0px;
+      }
+
+
+
+
+    }
+    .nav{
+     @include laptop{
+        text-align: right;
+        margin-right: 30px;
+      }
+    @include mobile{
+      display: none;
+    }
+    }
+    nav a {
+      font-family: $SkodaBold;
+      font-size: 26px;
+      color: $white;
+      text-decoration: none;
+      position: relative;
+      line-height: 50px;
+      display: block;
+
+      @include laptop{
+        font-size: 20px;
+      }
+      @include tablet{
+        font-size: 16px;
+        line-height: 30px;
+      }
+
+
+      &:hover {
+        border-bottom: 2px solid $white;
+
+
+      }
+
+    }
+
+  }
+  .btn_v1{
+    background: url("../assets/images/btn_v1.png") no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 70px;
+    display: block;
+    font-family: $SkodaBold;
+    font-size: 25px;
+    text-align: center;
+    line-height: 78px;
+    text-decoration: none;
+    color: $white;
+    margin-right: 30px;
+    @include transition($transition);
+    @include mobile{
+      margin: 0 auto;
+      margin-bottom: 24px;
+    }
+    @include phone{
+      background-size: contain;
+      width: 230px;
+      height: 65px;
+      line-height: 60px;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    &:hover{
+      background: url("../assets/images/btn_hover.png") no-repeat;
+      background-size: cover;
+      @include phone{
+        background-size: contain;
+      }
+    }
+  }
+  .btn_v2{
+      background: url("../assets/images/btn_v2.png") no-repeat;
+      background-size: cover;
+      width: 300px;
+      height: 70px;
+      text-align: center;
+      display: block;
+      line-height: 78px;
+      text-decoration: none;
+      color: $white;
+      font-family: $SkodaBold;
+      font-size: 25px;
+      margin-bottom: 24px;
+      @include transition($transition);
+      @include mobile{
+      margin: 0 auto;
+      margin-bottom: 24px;
+      }
+      @include phone{
+        background-size: contain;
+        width: 230px;
+        height: 65px;
+        line-height: 60px;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      &:hover{
+        background: url("../assets/images/btn_hover.png") no-repeat;
+        background-size: cover;
+        @include phone{
+          background-size: contain;
+        }
+      }
+  }
+  .group_btn{
+    z-index: 2;
+    @include flexbox();
+    @include flex-wrap(wrap);
+    max-width: 740px;
+    margin-top: 60px;
+    @include justify-content(center);
+    @include mobile{
+      margin-top: 40px;
+      z-index: 1;
+    }
+    div{
+      cursor: pointer;
+      @include phone{
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+    }
+
+
+  }
+}
+
+
+/*end top*/
+
+
+/*video_player*/
+.video_player .wrapper{
+  max-width: 100%;
+  padding: 0;
+}
+.video_player .video{
+  width: 100%;
+
+  @include laptop{
+
+  }
+  @include tablet{
+
+  }
+}
+/*video_player*/
+
+/*how_it_works*/
+.how_it_works{
+  text-align: center;
+  padding-top: 87px;
+  background: $white;
+  padding-bottom: 179px;
+  .wrapper{
+    max-width: 1188px;
+  }
+  @include tablet{
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  @include phone{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  h1{
+    background: linear-gradient(to right,rgba(49,16,36,1) 0%,rgba(49,16,36,1) 18%,rgba(111,49,111,1) 50%,rgba(49,16,36,1) 82%,rgba(49,16,36,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    font-size: 95px;
+    @include laptop{
+      font-size: 105px;
+    }
+    @include tablet{
+      font-size: 75px;
+    }
+    @include mobile{
+      font-size: 60px;
+    }
+    @include phone{
+      font-size: 38px;
+    }
+  }
+  h2{
+    font-family: $SkodaBold;
+    color: $black;
+    font-size: 65px;
+    margin-top: 60px;
+    margin-bottom: 39px;
+    @include laptop{
+      margin-top: 54px;
+    }
+    @include tablet{
+      margin-top: 25px;
+      margin-bottom: 21px;
+    }
+    @include mobile{
+      margin-top: 14px;
+      margin-bottom: 15px;
+      font-size: 44px
+    }
+    @include phone{
+      font-size: 30px;
+    }
+  }
+  h3{
+    font-family: $SkodaRegular;
+    color: $black;
+    font-size: 34px;
+    margin-bottom: 93px;
+    margin-top: 53px;
+    @include tablet{
+      font-size: 35px;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+    @include mobile{
+      font-size: 23px;
+      margin-top: 20px;
+    }
+    @include phone{
+      font-size: 14px;
+    }
+
+  }
+
+}
+.items {
+  @include flexbox;
+  text-align: left;
+  font-family: $SkodaRegular;
+  @include tablet{
+    @include flex-direction(column);
+  }
+  .item {
+    position: relative;
+    background: $gray;
+    margin: 0 10px;
+    padding-top: 24px;
+    padding-left: 14px;
+    padding-right: 27px;
+    overflow: hidden;
+    max-width: 232px;
+    margin-right: 23px;
+    height: 516px;
+    cursor: pointer;
+    @include transition($transition);
+    @include laptop{
+      padding-left: 10px;
+      padding-right: 10px;
+      height: 555px;
+    }
+    @include tablet{
+      height: initial;
+      max-width: 400px;
+      margin: 0 auto;
+      margin-bottom: 25px;
+
+    }
+    @include tablet{
+      background: url(../assets/images/our_mission_hover.jpg) 0 0 no-repeat #220523;
+      background-size: cover;
+
+    }
+    &:after {
+      content: "";
+      background: url(../assets/images/our_mission_hover.jpg) 0 0 no-repeat #220523;
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 389%;
+      height: 100%;
+      background-size: contain;
+
+
+      z-index: 1;
+    }
+    &:before {
+      content: "";
+      background: url(../assets/images/our_mission_1.png) 0 0 no-repeat;
+      opacity: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 389%;
+      height: 100%;
+
+      background-size: contain;
+      z-index: 1;
+      @include tablet{
+        opacity: 0;
+      }
+    }
+    &:hover:after{
+      opacity: 1;
+      @include tablet{
+        opacity: 0;
+      }
+
+    }
+    &:hover .count{
+      z-index: 3;
+      position: relative;
+
+    }
+    &:hover .title{
+      z-index: 3;
+      position: relative;
+      color: $white;
+
+    }
+    &:hover .text{
+      z-index: 3;
+      position: relative;
+      color: $white;
+
+    }
+    .count{
+      font-family: $SkodaRegular;
+      color:$jazzberryJam;
+      font-size:65px;
+      @include tablet{
+        font-size: 47px;
+      }
+    }
+    .title{
+      font-size: 23px;
+      color: $black;
+      margin-top: 22px;
+      line-height: 31px;
+      font-family: "Skoda_regular", sans-serif;
+
+      height: 244px;
+      @include laptop{
+        font-size: 23px;
+        margin-bottom: 85px;
+      }
+      @include tablet{
+        margin-bottom: 32px;
+        margin-top: 20px;
+        color: $white;
+        height:100%;
+      }
+
+    }
+    .text{
+      font-size: 18px;
+      color: $black;
+      line-height: 22px;
+      @include tablet{
+        padding-bottom: 30px;
+        font-size: 17px;
+        color: $white;
+      }
+
+    }
+
+
+
+  }
+}
+.item_4.item:hover:after{
+  background-position-x: -1146%;
+  height: 147%;
+  background-position-y: 0px
+}
+.item_1.item:hover:after{
+  height: 147%;
+  background-position: 0;
+
+}
+.item_2.item:hover:after{
+  background-position-x: -400%;
+  height: 145%;
+  background-position-y: -18px;
+}
+.item_3.item:hover:after{
+  background-position-x: -632%;
+  height: 145%;
+  background-position-y: 0px;
+}
+.item_4.item:before{
+  background-position-x: -480%;
+  height: 100%;
+  background-position-y: 0;
+}
+.item_1.item:before{
+  height: 100%;
+  background-position: 0;
+
+}
+.item_2.item:before{
+  background-position-x: -192%;
+  height: 100%;
+  background-position-y: 0;
+}
+.item_3.item:before{
+  background-position-x: -267%;
+  height: 100%;
+  background-position-y: 0;
+}
+.items .item_3 .title{
+
+  @include tablet{
+    margin-bottom: 32px;
+  }
+}
+.items .item_4 .title{
+
+  @include tablet{
+    margin-bottom: 32px;
+  }
+}
+
+/*how_it_works*/
+/*kmts_roadmap*/
+.kmts_roadmap{
+  background: url(../assets/images/bg_roadmap1.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
+.kmts.roadmap{
+  padding-top: 115px;
+  @include laptop{
+    padding-top: 50px;
+  }
+  .kmts_wrapper{
+    max-width: 800px;
+    margin: 0 auto;
+    margin-left: 137px;
+
+    @include laptop{
+      max-width: 450px;
+    }
+  }
+  h1{
+    margin-bottom: 98px;
+    @include laptop{
+      font-size: 65px;
+    }
+      @include phone{
+        font-size: 38px;
+      }
+
+}
+  .road{
+    background: url(../assets/images/ktms1.png) no-repeat;
+    background-size: cover;
+    width: 195px;
+    height: 177px;
+    @include justify-content(center);
+    @include align-items(center);
+    margin-bottom: 43px;
+
+
+  }
+  .road:hover {
+    background: url(../assets/images/ktms_hover1.png) no-repeat;
+    background-size: cover;
+    width: 195px;
+    height: 177px;
+
+
+  }
+  .road:hover + .text span{
+    font-family: "skoda_pro_extra_bold", sans-serif;
+    opacity: 1;
+  }
+  .road:hover + .text p{
+    opacity: 1;
+    font-family: "Skoda_pro_bold", sans-serif;
+  }
+  .text{
+    @include flex-direction(column);
+    @include align-items( baseline);
+    opacity: 1;
+    left: initial;
+    width: initial;
+    right: 191px;
+    height: 203px;
+    p{
+      opacity: 0.3;
+      font-size: 21px;
+
+      @include laptop{
+        font-size: 16px;
+        width: 229px;
+      }
+    }
+  }
+  .text span{
+    font-family: "Skoda_regular", sans-serif;
+    font-size: 70px;
+    display: block;
+    line-height: 70px;
+    @include laptop{
+      font-size: 55px;
+      line-height: 45px;
+    }
+  }
+
+
+
+}
+
+/*kmts_roadmap*/
+/*roadmap*/
+.roadmap{
+
+  text-align: center;
+  color: $white;
+
+
+  h1{
+    @include laptop{
+      font-size: 65px;
+    }
+    @include mobile{
+      font-size: 45px;
+    }
+    @include phone{
+      font-size: 32px;
+    }
+  }
+  .roadmap_inner{
+    //background: url(../assets/images/bg_roadmap.jpg) no-repeat;
+    //background-size: cover;
+
+    padding-top: 83px;
+    width: 100%;
+    padding-bottom: 71px;
+    @include mobile{
+      padding-top: 40px;
+
+      padding-bottom: 40px;
+    }
+
+
+
+
+
+  }
+  .wrapper{
+    max-width: 1500px;
+    position: relative;
+  }
+  .roadmap_wrapper{
+    @include flexbox();
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 10px;
+    padding-top: 62px;
+    @include tablet{
+      max-width: 500px;
+    }
+    @media (max-width: 450px) {
+      max-width: 200px;
+
+    }
+
+
+    div{
+      width: 195px;
+      text-align: center;
+      margin-bottom: 37px;
+
+    }
+  }
+  .text{
+    opacity: 0.3;
+    font-size: 20px;
+    font-family: "Skoda_bold", sans-serif;
+    line-height: 24px;
+
+
+  }
+
+
+}
+.roadmap .roadmap_wrapper .road{
+  margin-bottom: 45px;
+}
+.road{
+  background: url("../assets/images/roadmap1.png") no-repeat;
+  width: 195px;
+  height: 177px;
+  background-size: contain;
+  cursor: pointer;
+  position: relative;
+  @include flexbox();
+  @include transition($transition);
+  z-index: 1;
+
+
+  p{
+    font-family: $SkodaLight;
+    margin: auto;
+    font-size: 40px;
+
+    span{
+      font-size: 17px;
+      display: block;
+      font-family: $SkodaLight1;
+
+    }
+  }
+}
+.road:hover{
+  background: url("../assets/images/hover_roadmap.png") no-repeat;
+  width: 195px;
+  height: 177px;
+  background-size: contain;
+
+
+  p{
+    font-family: $SkodaBold;
+  }
+  span{
+    font-family: $SkodaLight1;
+  }
+}
+.road:hover + .text{
+  opacity: 1;
+
+}
+.road:before{
+  content: '';
+  position: absolute;
+  background: url("../assets/images/shape.png") no-repeat;
+  width: 40px;
+  height: 65px;
+  background-size: contain;
+  bottom: -33px;
+  margin: auto;
+  left: 3px;
+  right: 0;
+
+
+}
+.roadmap .roadmap_wrapper .map_5 p,.roadmap .roadmap_wrapper .map_7 p {
+  width: 202px;
+}
+
+
+
+/*roadmap*/
+
+/*our_app*/
+.our_app{
+  background: url("../assets/images/bg_our_app.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  padding-top: 0px;
+  @include laptop{
+    padding-top: 60px;
+
+  }
+  @include mobile{
+    padding-top: 20px;
+  }
+  .owl-stage-outer{
+    padding-top: 172px;
+    @include laptop{
+      padding-top: 105px;
+    }
+  }
+  .wrapper {
+    max-width: 1247px;
+  }
+  h1{
+    color: $black;
+    text-align: right;
+    padding-top: 15px;
+    padding-right: 83px;
+    @include laptop{
+      font-size: 65px;
+    }
+    @include mobile{
+      font-size: 45px;
+      padding-right: 30px;
+    }
+  }
+  .owl-carousel{
+    margin-top: -16px;
+  }
+  .our_app_wrapper{
+
+    @include flexbox();
+    width: 100%;
+    @include tablet{
+      @include justify-content(center);
+    }
+    h2{
+      position: absolute;
+
+      font-family: $SkodaBold;
+      font-size: 67px;
+      color: $black;
+      top: -70px;
+      right: 74px;
+      @include tablet{
+        right: 0;
+        left: 0;
+        margin: auto;
+        text-align: center;
+
+      }
+      @include mobile{
+        font-size: 43px;
+      }
+      @media (max-width: 500px) {
+        font-size: 28px;
+        
+      }
+
+    }
+    .slide_1{
+      position: absolute;
+      right: 56px;
+      top: -70px;
+      @include mobile{
+        right: 0px;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+      }
+      h2{
+        position: relative;
+        top: 0;
+        right: 0px;
+
+      }
+      p{
+        font-size: 23px;
+        font-family: $SkodaBold;
+        color: $black;
+        text-align: right;
+        margin-top: 10px;
+        margin-right: 8px;
+        @include mobile{
+          font-size: 18px;
+          text-align: center;
+        }
+        @media (max-width: 500px) {
+          font-size: 13px;
+
+        }
+      }
+    }
+    .bottom{
+      font-size: 21px;
+      font-family: $SkodaBold;
+      color: $black;
+      margin-left: 27px;
+      margin-top: -12px;
+      line-height: 27px;
+      @media (max-width: 1050px) {
+        font-size: 15px;
+      }
+      br{
+        @include laptop{
+          display: none;
+        }
+      }
+    }
+
+    div{
+      @include laptop{
+        padding: 0 10px;
+      }
+    }
+    .hand{
+
+      width: 552px;
+      height: 907px;
+      margin-right: 37px;
+      @include laptop{
+        //width: 50%;
+        //height: 50%;
+        margin-right: 15px;
+      }
+      @include tablet{
+        width: 50%;
+        height: 50%;
+        display: none;
+      }
+      @include mobile{
+        width: 200px;
+        height: 100%;
+        margin-top: 140px;
+
+      }
+      @include phone{
+        display: none;
+      }
+    }
+    ul{
+      margin-top: 85px;
+      @include tablet{
+        margin-top: 50px;
+        margin-top: 50px;
+        max-width: 500px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 70px;
+        @include mobile{
+          margin-top: 30px;
+        }
+      }
+      @include phone{
+        margin-bottom: 35px;
+      }
+    }
+    li{
+      @include flexbox();
+      @include align-items(top);
+      margin-bottom: 29px;
+      @include tablet{
+        margin-bottom: 25px;
+      }
+      @include mobile{
+        margin-bottom: 12px;
+      }
+      @media (max-width: 1050px) {
+        margin-bottom: 40px;
+      }
+      p{
+        font-family: $SkodaRegular;
+        font-size: 20px;
+        line-height: 25px;
+        margin-top: 0px;
+        b+ br{
+          @include laptop{
+            display: block;
+          }
+        }
+        br{
+          @include laptop{
+            display: none;
+          }
+        }
+
+        b{
+          font-family: $SkodaBold;
+        }
+        @include laptop{
+          font-size: 15px;
+          line-height: 23px;
+        }
+        @include mobile{
+
+          line-height: 20px;
+        }
+
+      }
+    }
+    li img{
+      width: 111px;
+      margin-right: 79px;
+      height: 50%;
+      @include laptop{
+        margin-right: 13px;
+      }
+      @include tablet{
+        width: 90px;
+        height: 50%;
+      }
+      @include mobile{
+        width: 60px;
+      }
+    }
+  }
+}
+
+/*our_app*/
+
+
+/*team*/
+.team{
+  color: $white;
+  background: url("../assets/images/bg_team.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding-top: 94px;
+  padding-bottom: 136px;
+  @include laptop{
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  @include mobile{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .team_wrapper{
+    @include flexbox();
+    @include flex-direction(column);
+    margin-top: 60px;
+
+  }
+  .group{
+    @include flexbox();
+    @include justify-content(center);
+    @include mobile{
+      @include flex-direction(column);
+    }
+    &:first-child{
+      margin-bottom: 47px;
+      @include mobile{
+        margin-bottom: 0px;
+      }
+    }
+
+    &:last-child{
+      margin-top: 53px;
+      @include mobile{
+        margin-top: 0px;
+      }
+
+    }
+    div{
+      margin: 0 25px;
+      width: 25%;
+      @include laptop{
+        margin: 0 15px;
+      }
+      @include mobile{
+        width: 100%;
+        margin: 0;
+      }
+    }
+    img{
+      @include laptop{
+        width: 210px;
+      }
+      @include tablet{
+        width: 155px;
+      }
+      @include mobile{
+        width: 200px;
+      }
+    }
+  }
+  h1{
+    color: $white;
+    text-align: center;
+    @include laptop{
+      font-size: 65px;
+    }
+    @include mobile{
+      font-size: 45px;
+    }
+
+  }
+  h6{
+    font-family: $RobotoBold;
+    font-size: 30px;
+    margin-top: 12px;
+    line-height: 33px;
+    margin-bottom: 25px;
+    @include tablet{
+      font-size: 25px;
+      margin-top: 5px;
+      line-height: 29px;
+      margin-bottom: 13px;
+    }
+  }
+  p{
+    font-family: $RobotoThin;
+
+    font-size: 30px;
+    line-height: 35px;
+    @include laptop{
+      font-size: 23px;
+    }
+    @include tablet{
+      font-size: 20px;
+      line-height: 25px;
+    }
+    @include mobile{
+      margin-bottom: 35px;
+      font-size: 20px;
+    }
+  }
+  .linkedin{
+    position: absolute;
+    background: url("../assets/images/logo_linkedin.png") no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    @include transition($transition);
+    bottom: 2px;
+    cursor: pointer;
+    opacity: 0.5;
+    right: 4px;
+    &:hover{
+      opacity: 1;
+
+    }
+    @include laptop{
+      right: -4px;
+    }
+    @include tablet{
+      right: -6px;
+      width: 20px;
+      height: 20px;
+
+    }
+    @include mobile{
+      right: -4px;
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .group .photo{
+
+    position: relative;
+    width: 252px;
+    margin: 0 auto;
+    @include laptop{
+      width: 210px;
+    }
+    @include tablet{
+      width: 155px;
+    }
+    @include mobile  {
+      width: 200px;
+    }
+
+  }
+}
+.team .group .team_3{
+  position: relative;
+  p{
+    position: absolute;
+    left: -14px;
+    width: 279px;
+
+    right: 0;
+    margin: auto;
+    @include laptop{
+      position: relative;
+      left: 0px;
+      width: 100%;
+      right: 0;
+      margin: auto;
+    }
+    @include mobile{
+      margin-bottom: 35px
+    }
+  }
+}
+
+/*end team*/
+
+
+/*questions*/
+.faq{
+  padding-top: 111px;
+  padding-bottom: 26px;
+  @include laptop{
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  @include mobile{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+}
+.faq h1{
+  color: $Christalle;
+  text-align: center;
+  margin-bottom: 85px;
+  @include laptop{
+    font-size: 65px;
+  }
+  @include tablet{
+    font-size: 55px;
+    margin-bottom: 43px;
+  }
+  @include mobile{
+    font-size: 35px;
+    margin-bottom: 35px;
+  }
+  @include phone{
+    line-height: 40px;
+  }
+}
+.faq dd {
+  display: none;
+  margin-top: -24px;
+
+  max-width: 100%;
+  @include tablet{
+    max-width: 100%;
+  }
+  p{
+    max-width: 511px;
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 20px;
+    text-align: left;
+    font-family: $RobotoLight;
+    color: $DarkGray;
+    @include laptop{
+      max-width: 100%;
+    }
+    @include tablet{
+      max-width: 100%;
+    }
+  }
+}
+.faq dt {
+
+   font-size: 20px;
+   line-height: 26px;
+    max-width: 100%;
+   margin-bottom: 35px;
+   position: relative;
+  @include tablet{
+    max-width: 100%;
+  }
+ }
+
+dd .video{
+  max-width: 510px;
+  margin-bottom: 47px;
+
+}
+
+.faq_group{
+  position: relative;
+  padding: 0 13px;
+  @include flexbox();
+  @include mobile{
+    @include flex-direction(column);
+  }
+}
+dt a{
+  font-family: $RobotoBold;
+  font-size: 20px;
+  text-decoration: none;
+  color:$Indigo;
+
+}
+/*questions*/
+/*footer*/
+footer{
+  background: url("../assets/images/bg_footer.jpg") no-repeat;
+  background-size: cover;
+  padding: 50px 0;
+  @include laptop{
+    padding: 30px 0;
+  }
+  .wrapper {
+    max-width: 1120px;
+  }
+  ul{
+    @include flexbox();
+    @include justify-content(space-between);
+    @include align-items(center);
+    @include tablet{
+      @include flex-direction(column);
+    }
+  }
+  li{
+    display: inline-block;
+    @include tablet{
+      margin-bottom: 24px;
+
+    }
+    &:last-child{
+      @include tablet{
+        margin-bottom: 0px;
+      }
+    }
+
+    &:first-child a{
+      display: inline-block;
+    }
+
+    a{
+      @include flexbox();
+      font-family: $SkodaBold;
+      font-size: 18px;
+      text-decoration: none;
+      color: $white;
+      opacity:0.8;
+      @include transition($transition);
+      @include laptop{
+
+        font-size: 16px;
+      }
+
+      span{
+        font-family: $SkodaRegular;
+      }
+      &:hover{
+        opacity: 1;
+
+      }
+      img{
+        margin-right: 10px;
+        margin-top: -2px;
+      }
+
+    }
+  }
+}
+/*footer*/
+
+/*slider*/
+.owl-dot{
+  display: inline-block;
+  background: $RegentStBlue!important;
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  margin: 0 6px;
+  outline: none;
+  @include mobile{
+    width: 14px;
+    height: 14px;
+  }
+}
+.owl-dot.active{
+  background: $MidnightExpress!important;
+}
+.owl-dots{
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 35px;
+  @include tablet{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  @include mobile{
+    bottom: 5px;
+  }
+}
+.owl-nav span{
+  display: none;
+
+}
+.owl-prev{
+  position: absolute;
+  top: -80px;
+  bottom: 0;
+  left: 37px;
+  margin: auto;
+  background: url(../images/arrow_left.png) no-repeat !important;
+  background-size: contain !important;
+  background-position: center;
+  width: 28px;
+  height: 36px;
+  outline: none;
+  @include laptop{
+    display: none;
+  }
+}
+.owl-next{
+  position: absolute;
+  top: -80px;
+  bottom: 0;
+  right: 37px;
+  margin: auto;
+  background: url(../images/arrow_left.png) no-repeat !important;
+  background-size: contain !important;
+  background-position: center;
+  width: 28px;
+  height: 36px;
+  transform: scaleX(-1);
+  outline: none;
+  @include laptop{
+    display: none;
+  }
+}
+/*slider*/
+
+dd p {
+  max-width: 511px;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 38px;
+  line-height: 20px;
+  text-align: left;
+  font-family: "roboto-light", sans-serif;
+  color: #878787; }
+dl{
+  width: 50%;
+  &:first-child{
+    margin-right: 92px;
+    @include mobile{
+      margin-right: 0px;
+    }
+  }
+  @include mobile{
+    width: 100%;
+  }
+
+}
+@media screen and (max-width: 1200px) {
+  dd p {
+    max-width: 100%; } }
+@media screen and (max-width: 991px) {
+  dd p {
+    max-width: 100%; } }
+
+
+
+@media screen and (max-width: 991px) {
+  dd .video {
+    position: relative;
+    top: 0;
+    right: 0;
+    max-width: 500px;
+    width: 100%; } }
+
+/*video*/
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  &43 {
+    padding-top: 75%;
+  }
+  &169 {
+    padding-top: 56.3%;
+  }
+}
+.videoIframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+.videoPoster {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-size: cover;
+  text-indent: -999em;
+  overflow: hidden;
+  opacity: 1;
+  -webkit-transition: opacity 800ms, height 0s;
+  -moz-transition: opacity 800ms, height 0s;
+  transition: opacity 800ms, height 0s;
+  -webkit-transition-delay: 0s, 0s;
+  -moz-transition-delay: 0s, 0s;
+  transition-delay: 0s, 0s;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 44%;
+    left: 48%;
+
+    height: 117px;
+    margin: -40px 0 0 -40px;
+    background: url("../assets/images/button.png") no-repeat;
+    background-size: contain;
+    width: 165px;
+    -webkit-transition: border-color 300ms;
+    -moz-transition: border-color 300ms;
+    transition: border-color 300ms;
+    @include laptop{
+      left: 48%;
+      height: 94px;
+      width: 104px;
+
+    }
+  }
+
+
+
+  .videoWrapperActive & {
+    opacity: 0;
+    height: 0;
+    -webkit-transition-delay: 0s, 800ms;
+    -moz-transition-delay: 0s, 800ms;
+    transition-delay: 0s, 800ms;
+  }
+}
+
+
+.kmts.roadmap .map_4 .road:before {
+  content: '';
+  position: absolute;
+  width: 291px;
+  height: 3px;
+  background-size: contain;
+  bottom: 0;
+  margin: auto;
+  right: -270px;
+  left: initial;
+  top: 5px;
+}
+
+/*video*/
+/*partners*/
+.partners img{
+  margin-top: 337px;
+  margin-bottom: 417px;
+  @include maxlaptop{
+    margin-top: 237px;
+    margin-bottom: 317px;
+
+  }
+  @include tablet{
+    margin-top: 137px;
+    margin-bottom: 200px;
+  }
+  @include mobile{
+    margin-top: 87px;
+    margin-bottom: 100px;
+    width: 180px;
+  }
+}
+/*partners*/
+
+.store_img {
+  @include flexbox();
+  @include justify-content(center);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+
+  bottom: 117px;
+  @include laptop{
+    bottom: 87px;
+  }
+  @include tablet{
+    position: relative;
+    bottom: 0!important;
+    left: 0;
+    right: 0!important;
+    margin-top: 15px;
+  }
+  img{
+    height: 55px!important;
+
+}
+
+
+}
+
+.app_store{
+  margin-right: 25px;
+}
+@media (max-width: 1025px){
+  .store_img{
+  bottom: 87px;
+  right: 200px;
+}
+}
