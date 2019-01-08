@@ -283,7 +283,7 @@ h1 {
     display: -webkit-flex;
     display: flex;
     background-color: #03091F;
-    box-shadow: 0px 10px 120px 48px rgba(3, 9, 31, 0.9);
+    
     position: fixed;
     width: 100%;
     z-index: 3; }
